@@ -1,0 +1,45 @@
+framework_risen:
+  acronimo:
+    R: "Role (Rol)"
+    I: "Instructions (Instrucciones principales)"
+    S: "Steps (Pasos metodológicos)"
+    E: "End Goal (Objetivo Final)"
+    N: "Narrowing (Restricciones / Delimitación)"
+
+  analisis_critico_riguroso:
+    precision_taxonomica: "RISEN es el framework más cercano a un System Prompt genuino de los que has propuesto. La inclusión de 'Narrowing' (Restricciones) es crítica; un sistema sin límites (Guardrails) es un sistema vulnerable a inyecciones y alucinaciones."
+    fortalezas_estructurales: "Introduce 'Steps' (Pasos), lo que fuerza al modelo a utilizar Chain of Thought (Razonamiento en cadena) interno antes de generar la salida. Esto reduce drásticamente los errores lógicos y matemáticos."
+    debilidades_arquitectonicas: "Sigue manteniendo 'End Goal' (Objetivo Final), que es una variable efímera. Si codificas el objetivo final estáticamente en el backend de un sistema, el agente solo servirá para una única tarea."
+    veredicto_tecnico: "Es un framework robusto. Si extraes la variable 'E' (End Goal) y la delegas al User Prompt, las variables R, I, S y N forman una arquitectura de System Prompt de grado de producción altamente efectiva."
+
+  desglose_estructural:
+    Role_Rol:
+      definicion: "La identidad operativa del agente."
+      evaluacion: "Debe ser inmutable durante la sesión."
+    Instructions_Instrucciones:
+      definicion: "El mandato general de lo que el modelo debe ejecutar."
+      evaluacion: "El núcleo del prompt."
+    Steps_Pasos:
+      definicion: "La secuencia algorítmica que el modelo debe seguir para procesar la información."
+      evaluacion: "Esencial para tareas analíticas, de programación o matemáticas complejas."
+    End_Goal_Objetivo_Final:
+      definicion: "El resultado esperado de la iteración actual."
+      evaluacion: "Es un componente transaccional (User Prompt). No debería estar codificado en duro en el sistema base."
+    Narrowing_Restricciones:
+      definicion: "Límites estrictos, formatos prohibidos, tono a evitar y reglas de seguridad."
+      evaluacion: "El componente más crítico de un System Prompt a nivel empresarial."
+
+  ejemplos_aplicados_como_system_prompt:
+    ejemplo_1_moderador_contenido:
+      Role: "Agente de confianza y seguridad (Trust & Safety) para una plataforma de foros."
+      Instructions: "Evaluar el texto de los usuarios para detectar discursos de odio o doxing."
+      Steps: "1. Leer el texto completo. 2. Identificar PII (Información Personal Identificable). 3. Evaluar el léxico contra políticas de agresión. 4. Asignar un puntaje de riesgo del 1 al 10."
+      End_Goal: "Determinar si la publicación debe ser aprobada, marcada para revisión humana o eliminada automáticamente."
+      Narrowing: "NUNCA justifiques ni repitas el contenido ofensivo en tu análisis. Tu salida debe ser estrictamente un objeto JSON. No emitas juicios morales."
+
+    ejemplo_2_analista_datos_sql:
+      Role: "Ingeniero de Datos Senior especializado en PostgreSQL."
+      Instructions: "Convertir preguntas en lenguaje natural a consultas SQL optimizadas."
+      Steps: "1. Analizar el esquema de la base de datos proporcionado. 2. Identificar las tablas y claves foráneas necesarias (JOINs). 3. Redactar la consulta priorizando índices. 4. Explicar brevemente la lógica de la consulta."
+      End_Goal: "Entregar una consulta SQL ejecutable que responda a la pregunta del usuario."
+      Narrowing: "No utilices SELECT *. Siempre limita los resultados a 1000 filas (LIMIT 1000) a menos que se indique lo contrario. No incluyas comandos DML (INSERT, UPDATE, DELETE); eres de solo lectura."

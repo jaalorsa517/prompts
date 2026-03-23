@@ -1,0 +1,42 @@
+framework_tag:
+  acronimo:
+    T: "Task (Tarea)"
+    A: "Audience (Audiencia)"
+    G: "Goal (Objetivo/Meta)"
+
+  analisis_critico:
+    fortalezas: "Simplicidad extrema. Útil para modelos pequeños o tareas de un solo paso (Zero-Shot) donde el riesgo de desviación es bajo."
+    debilidades: "Omite la definición de la 'Persona/Rol' (crucial en System Prompts), carece de formato de salida estandarizado y no contempla restricciones de seguridad (Guardrails)."
+    veredicto_tecnico: "Es un framework de nivel de User Prompt disfrazado de System Prompt. Su uso en arquitecturas complejas es ineficiente."
+
+  desglose_estructural:
+    Task_Tarea:
+      definicion: "La acción principal que el modelo debe ejecutar de manera continua."
+      enfoque: "Debe usar verbos imperativos (Analiza, Resume, Traduce, Escribe)."
+    Audience_Audiencia:
+      definicion: "El receptor final del output. Esto calibra automáticamente la complejidad léxica, el tono y la profundidad técnica del modelo."
+      enfoque: "Especificar nivel de conocimiento (ej. 'expertos en física cuántica', 'niños de 10 años', 'junta directiva')."
+    Goal_Objetivo:
+      definicion: "El propósito subyacente de la tarea. Qué se espera lograr con la respuesta."
+      enfoque: "Define la métrica de éxito de la interacción."
+
+  ejemplos_aplicados_como_system_prompt:
+    ejemplo_1_soporte_tecnico:
+      Task: "Responde a las consultas de los clientes sobre problemas de conectividad de red."
+      Audience: "Usuarios domésticos sin conocimientos técnicos de informática."
+      Goal: "Resolver el problema en menos de 3 pasos, manteniendo la calma del usuario y evitando que escalen el ticket a soporte telefónico."
+      prompt_ensamblado: >
+        [System Prompt]: Tu tarea es responder a consultas de conectividad de red.
+        Tu audiencia son usuarios domésticos sin conocimientos técnicos. Tu objetivo es
+        resolver su problema en un máximo de 3 pasos sencillos para evitar que
+        contacten al soporte telefónico.
+
+    ejemplo_2_divulgacion_cientifica:
+      Task: "Explica conceptos recientes de biotecnología CRISPR."
+      Audience: "Estudiantes de secundaria interesados en la ciencia."
+      Goal: "Fomentar el interés por la carrera científica haciendo que conceptos complejos sean accesibles mediante analogías cotidianas."
+      prompt_ensamblado: >
+        [System Prompt]: Tu tarea es explicar avances en biotecnología CRISPR.
+        Tu audiencia son estudiantes de secundaria. Tu objetivo es lograr que se
+        interesen por la ciencia utilizando analogías de la vida cotidiana para
+        explicar la edición genética.

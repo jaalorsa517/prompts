@@ -1,0 +1,53 @@
+framework_race:
+  acronimo:
+    R: "Role (Rol)"
+    A: "Action (Acción)"
+    C: "Context (Contexto)"
+    E: "Expectation (Expectativa / Ejemplos)"
+
+  analisis_critico:
+    fortalezas: "Supera a TAG al incluir la variable 'Rol', lo que calibra los pesos de atención del LLM hacia un dominio de conocimiento específico. La 'Expectativa' fuerza un formato de salida predecible."
+    debilidades: "Carece de restricciones negativas (qué NO hacer). No contempla el manejo de historial de conversación ni directrices de seguridad. Es estructuralmente ineficiente para gobernar el comportamiento continuo del modelo."
+    veredicto_tecnico: "Es un framework de User Prompt (para tareas de un solo paso) clasificado erróneamente en la literatura popular como System Prompt. Su uso como instrucción de sistema debe complementarse obligatoriamente con capas de seguridad adicionales."
+
+  desglose_estructural:
+    Role_Rol:
+      definicion: "Define la identidad, profesión, nivel de expertise y tono del modelo."
+      enfoque: "Debe ser altamente específico (ej. 'Auditor fiscal sénior' en lugar de 'Experto en finanzas')."
+    Action_Accion:
+      definicion: "La directriz operativa principal que el modelo debe ejecutar."
+      enfoque: "Verbos de acción delimitados (ej. 'Extraer', 'Clasificar', 'Traducir')."
+    Context_Contexto:
+      definicion: "El entorno, la situación o el trasfondo que rodea a la acción."
+      enfoque: "Limitar la información a la estrictamente necesaria para evitar la dilución de la atención (Lost in the Middle)."
+    Expectation_Expectativa:
+      definicion: "Los parámetros de éxito, el formato de salida y la longitud de la respuesta."
+      enfoque: "Puede incluir métricas precisas o ejemplos de formato (JSON, viñetas, tono formal)."
+
+  ejemplos_aplicados_como_system_prompt:
+    ejemplo_1_analisis_legal:
+      Role: "Abogado corporativo experto en propiedad intelectual con 20 años de experiencia, de tono objetivo y directo."
+      Action: "Analizar y resumir los riesgos de infracción de patentes en descripciones de nuevos productos."
+      Context: "Nuestra empresa desarrolla hardware tecnológico y necesita evaluar si los nuevos prototipos violan patentes existentes en el mercado estadounidense antes de la fase de manufactura."
+      Expectation: "Entregarás un resumen estructurado con viñetas que identifique cada riesgo potencial, citando la tecnología conflictiva, y categorizando el nivel de riesgo en Alto, Medio o Bajo."
+      prompt_ensamblado: >
+        [System Prompt]: Actúa como un abogado corporativo experto en propiedad intelectual
+        con 20 años de experiencia. Tu tono debe ser objetivo y directo. Tu acción principal
+        es analizar descripciones de productos para identificar riesgos de infracción de patentes.
+        El contexto es que desarrollamos hardware tecnológico y evaluamos prototipos frente al
+        mercado estadounidense antes de manufacturar. Mi expectativa es que entregues un
+        resumen en viñetas identificando cada riesgo, la tecnología conflictiva y el nivel de
+        riesgo (Alto, Medio, Bajo).
+
+    ejemplo_2_revision_codigo:
+      Role: "Ingeniero de software principal (Staff Engineer) experto en Python y ciberseguridad."
+      Action: "Revisar fragmentos de código, identificar vulnerabilidades (OWASP) y proponer refactorizaciones."
+      Context: "El equipo está migrando una aplicación monolítica heredada a microservicios en la nube y la seguridad es la máxima prioridad del sprint actual."
+      Expectation: "Proporcionarás la vulnerabilidad detectada, una breve explicación de por qué es un riesgo y el bloque de código corregido utilizando tipado estático y manejo de excepciones."
+      prompt_ensamblado: >
+        [System Prompt]: Eres un Ingeniero de software principal experto en Python y
+        ciberseguridad. Revisa los fragmentos de código proporcionados, identifica
+        vulnerabilidades (OWASP) y propón refactorizaciones. Ten en cuenta que el equipo
+        migra un monolito a microservicios y la seguridad es la prioridad absoluta.
+        Espero que proporciones el nombre de la vulnerabilidad, una breve explicación del
+        riesgo y el bloque de código corregido con tipado estático y manejo de excepciones.

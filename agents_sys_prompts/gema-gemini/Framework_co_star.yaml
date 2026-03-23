@@ -1,0 +1,50 @@
+framework_costar:
+  acronimo:
+    C: "Context (Contexto)"
+    O: "Objective (Objetivo)"
+    S: "Style (Estilo)"
+    T: "Tone (Tono)"
+    A: "Audience (Audiencia)"
+    R: "Response (Respuesta / Formato de salida)"
+
+  analisis_critico_riguroso:
+    precision_taxonomica: "CO-STAR no es un System Prompt puro. Es una plantilla holística (Zero-Shot) que combina directrices de sistema (S, T, A, R) con entradas de usuario (C, O). Agruparlo estrictamente bajo 'frameworks_system_prompts' denota una incomprensión de la separación de capas en la arquitectura de LLMs."
+    fortalezas_estructurales: "Es superior a CARE y RACE para definir la 'personalidad' del modelo porque desglosa la identidad en tres vectores independientes: Estilo (referencia a entidades existentes), Tono (actitud emocional/intelectual) y Audiencia (calibración de complejidad)."
+    debilidades_arquitectonicas: "Al igual que los anteriores, omite variables de restricción negativa (Guardrails) fundamentales para un entorno de producción seguro."
+
+  desglose_estructural:
+    Context_Contexto:
+      definicion: "Información de fondo sobre el proyecto, la empresa o la situación."
+      evaluacion: "Pertenece lógicamente a la capa del User Prompt, a menos que el contexto sea estático para toda la aplicación."
+    Objective_Objetivo:
+      definicion: "La tarea principal y el fin último de la ejecución."
+      evaluacion: "Variable dinámica. Debe ir en el User Prompt."
+    Style_Estilo:
+      definicion: "El estilo de escritura a imitar, referenciando profesiones, autores o marcas conocidas."
+      evaluacion: "Variable central del System Prompt. (Ej: 'Escribe con el estilo analítico de un investigador de McKinsey')."
+    Tone_Tono:
+      definicion: "La actitud de la respuesta (objetivo, persuasivo, clínico, irónico)."
+      evaluacion: "Variable central del System Prompt."
+    Audience_Audiencia:
+      definicion: "A quién va dirigido el texto, lo que dicta el vocabulario y la sintaxis."
+      evaluacion: "Variable central del System Prompt."
+    Response_Respuesta:
+      definicion: "El formato exacto y la estructura de la salida esperada."
+      evaluacion: "Variable híbrida. Puede ser global (el sistema siempre responde en JSON) o local (el usuario pide una tabla para esta tarea específica)."
+
+  ejemplos_aplicacion_hibrida:
+    ejemplo_1_analista_ciberseguridad:
+      Context: "Nuestra infraestructura en la nube AWS sufrió un pico de tráfico inusual desde IPs de Europa del Este a las 03:00 AM."
+      Objective: "Redactar un informe preliminar de incidente para determinar si es un ataque DDoS o tráfico legítimo mal enrutado."
+      Style: "Analista de Inteligencia de Amenazas (CTI) militar."
+      Tone: "Clínico, urgente, basado en hechos, sin especulaciones."
+      Audience: "El CISO (Chief Information Security Officer) y la junta directiva."
+      Response: "Un reporte de una página con 3 secciones: Resumen Ejecutivo, Indicadores de Compromiso (IoCs) preliminares y Siguientes Pasos Inmediatos."
+
+    ejemplo_2_creador_contenido_tecnico:
+      Context: "Lanzamos una nueva API RESTful para procesamiento de pagos con criptomonedas."
+      Objective: "Explicar cómo autenticarse y realizar el primer pago de prueba (Hello World)."
+      Style: "Documentación oficial de Stripe."
+      Tone: "Informativo, alentador, sumamente claro y estructurado."
+      Audience: "Desarrolladores backend Junior y Mid-level."
+      Response: "Un documento Markdown con una breve introducción, los requisitos previos en viñetas y un bloque de código funcional en cURL y Node.js."

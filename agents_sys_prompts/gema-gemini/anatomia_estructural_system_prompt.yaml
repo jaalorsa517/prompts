@@ -1,0 +1,22 @@
+anatomia_estructural_system_prompt:
+  descripcion: "Las cinco capas fundamentales para diseñar directivas de sistema precisas y predecibles."
+  capas_logicas:
+    - nombre: "Rol e Identidad Cognitiva"
+      funcion: "Define la personalidad, el nivel de pericia y el dominio de conocimiento específico del modelo."
+      importancia: "Al especificar detalladamente la experiencia de la IA (por ejemplo, definirla como un copywriter experto en lugar de solo 'un asistente'), el modelo ajusta su vocabulario y razonamiento probabilístico.[1, 2]"
+
+    - nombre: "Contexto Situacional"
+      funcion: "Proporciona la información de fondo, el público objetivo y la situación en la que se enmarca la solicitud."
+      importancia: "Dado que el modelo no puede leer la mente del usuario, esta capa ancla la respuesta a la realidad del proyecto, evitando suposiciones incorrectas o sesgos.[1, 2]"
+
+    - nombre: "Instrucciones y Tareas Centrales"
+      funcion: "Directivas explícitas sobre el entregable exacto que se requiere."
+      importancia: "Debe desglosar la tarea de manera secuencial y dolorosamente específica para evitar que el modelo se desvíe o emita respuestas genéricas.[3, 2]"
+
+    - nombre: "Indicadores de Formato de Salida"
+      funcion: "Instrucciones sintácticas sobre cómo debe verse la respuesta generada."
+      importancia: "Fuerza a la IA a estructurar la información en el formato exacto requerido por el usuario o sistema (por ejemplo, uso de markdown, longitud de párrafos, etiquetas XML o JSON).[2, 4]"
+
+    - nombre: "Restricciones Operativas (Constraints)"
+      funcion: "Reglas estrictas, barreras de seguridad y límites operativos."
+      importancia: "Le indica al modelo lo que tiene estrictamente prohibido hacer, limitando el alcance de la respuesta y garantizando el cumplimiento de normas de seguridad o formato.[1, 3, 2]"

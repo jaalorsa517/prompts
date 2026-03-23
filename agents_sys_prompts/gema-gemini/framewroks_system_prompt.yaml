@@ -1,0 +1,22 @@
+frameworks_system_prompt:
+  descripcion: "Plantillas arquitectónicas que eliminan la ambigüedad, reducen la entropía del modelo y estandarizan la creación de directivas para entornos de producción.[1]"
+  marcos_dominantes:
+    - nombre: "TAG (Task, Action, Goal)"
+      enfoque: "Minimalista y de alta densidad de señal; elimina instrucciones periféricas y fuerza la especificidad absoluta.[2]"
+      caso_uso: "Tareas de clasificación simple, borradores rápidos y entornos donde la complejidad y latencia deben mantenerse bajas.[2]"
+
+    - nombre: "RACE (Role, Action, Context, Expectation)"
+      enfoque: "Optimizado para la eficiencia profesional, estructurando el comportamiento del modelo de forma compacta y predecible.[3]"
+      caso_uso: "Generación de contenido estándar, extracción de metadatos e interfaces conversacionales rápidas.[3]"
+
+    - nombre: "CARE (Context, Action, Requirements, Examples)"
+      enfoque: "Diseñado para entornos de alto control empresarial; exige la incorporación de ejemplos empíricos para condicionar estrictamente la red.[2]"
+      caso_uso: "Flujos de trabajo de automatización (RPA), agentes autónomos y sistemas donde la tolerancia a fallos es cercana a cero.[2]"
+
+    - nombre: "CO-STAR (Context, Objective, Style, Tone, Audience, Response format)"
+      enfoque: "Representa el estándar de exhaustividad para la comunicación persuasiva, forzando la adaptación dinámica al receptor y al formato.[1, 3]"
+      caso_uso: "Redacción de marketing corporativo, interacción directa con usuarios finales y generación de informes personalizados.[1]"
+
+    - nombre: "RISEN (Role, Instructions, Steps, End Goal, Narrowing/Constraints)"
+      enfoque: "Opera como un gestor de proyectos completo, facilitando el desglose algorítmico de instrucciones en secuencias lógicas y deterministas.[1, 3]"
+      caso_uso: "Programación y refactorización de código, planificación multi-agente y flujos de trabajo de múltiples etapas.[1]"

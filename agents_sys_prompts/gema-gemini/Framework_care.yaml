@@ -1,0 +1,49 @@
+framework_care:
+  acronimo:
+    C: "Context (Contexto)"
+    A: "Action (Acción)"
+    R: "Result (Resultado/Formato de salida)"
+    E: "Example (Ejemplos)"
+
+  analisis_critico_riguroso:
+    error_conceptual: "Clasificar CARE como un System Prompt es arquitectónicamente incorrecto. CARE carece de definición de persona, no establece barreras de seguridad (guardrails) y no define un comportamiento base. Es puramente transaccional."
+    ineficiencia_tecnica: "Forzar CARE en la capa del System Prompt desperdicia tokens de atención en ejemplos estáticos que deberían ser dinámicos. Los ejemplos de entrada/salida (E) pertenecen inherentemente a la capa del User Prompt, ya que cambian según la tarea."
+    veredicto: "Es altamente efectivo para la extracción estructurada de datos en una sola inferencia (Zero/Few-Shot), pero metodológicamente deficiente y vulnerable si se utiliza de forma aislada para gobernar el comportamiento raíz de un modelo de IA."
+
+  desglose_estructural:
+    Context_Contexto:
+      definicion: "La situación de fondo y los datos sobre los que el modelo debe operar."
+      observacion: "En un verdadero System Prompt, el contexto es global (ej. 'Eres un asistente de la empresa X'). En CARE, el contexto suele ser local y limitado a los datos inmediatos."
+    Action_Accion:
+      definicion: "La directiva operativa exacta."
+      observacion: "Requiere verbos precisos. Instrucciones ambiguas degradan la efectividad del modelo."
+    Result_Resultado:
+      definicion: "La estructura estandarizada esperada de la salida."
+      observacion: "Suele dictar esquemas rígidos, como estructuras JSON predefinidas, tablas Markdown o límites estrictos de longitud."
+    Example_Ejemplo:
+      definicion: "Pares de entrada/salida para calibrar los pesos de probabilidad del modelo."
+      observacion: "Es el componente que más mejora la exactitud, pero el más costoso computacionalmente hablando."
+
+  ejemplos_aplicados_forzosamente_como_system_prompt:
+    ejemplo_1_extraccion_datos_financieros:
+      Context: "El sistema procesa correos de proveedores con facturas adjuntas en texto plano."
+      Action: "Extraer el nombre del proveedor, el monto total y la fecha de vencimiento."
+      Result: "Objeto JSON con las claves: 'proveedor', 'monto' (como float), 'fecha_vencimiento' (ISO 8601)."
+      Example: "Entrada: 'Adjunto factura de TechCorp por $1500 a pagar el 15 de abril 2026'. Salida: {'proveedor':'TechCorp','monto':1500.00,'fecha_vencimiento':'2026-04-15'}."
+      prompt_ensamblado: >
+        [System Prompt]: Tu contexto es el procesamiento de correos con facturas en texto plano.
+        Tu acción es extraer proveedor, monto total y fecha de vencimiento.
+        El resultado debe ser un JSON con 'proveedor', 'monto' (float) y 'fecha_vencimiento' (ISO).
+        Ejemplo a seguir -> Entrada: 'Factura de TechCorp por $1500 vence 15 abril 2026'.
+        Salida esperada: {"proveedor": "TechCorp", "monto": 1500.00, "fecha_vencimiento": "2026-04-15"}.
+
+    ejemplo_2_traduccion_clinica:
+      Context: "Notas clínicas sin procesar redactadas por especialistas."
+      Action: "Reescribir el diagnóstico eliminando la jerga médica para que sea comprensible por el paciente."
+      Result: "Un párrafo de máximo 3 oraciones con un nivel de lectura de educación primaria."
+      Example: "Entrada: 'Paciente con rinitis alérgica severa y anosmia'. Salida: 'El paciente tiene una alergia nasal fuerte que le impide percibir olores'."
+      prompt_ensamblado: >
+        [System Prompt]: El contexto son notas clínicas de especialistas.
+        Tu acción es reescribir el diagnóstico eliminando la jerga para el paciente.
+        El resultado será de máximo 3 oraciones, nivel primaria.
+        Ejemplo -> Si recibes 'Paciente con anosmia', debes devolver 'El paciente no puede oler nada'.
