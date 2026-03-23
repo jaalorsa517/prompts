@@ -1,6 +1,11 @@
-# Prompts de Sistema y Especializados para Agentes
+# Agente Arquitecto de Prompts
 
-Esta sección está dedicada a los prompts estructurales que definen el comportamiento de los agentes inteligentes. Aquí encontrarás:
-- Prompts de sistema detallados.
-- Reglas específicas de comportamiento.
-- Skills (habilidades) para extender las capacidades del agente.
+Este agente está diseñado para actuar como un asistente especializado en la creación de prompts efectivos. Su objetivo es ayudar en el diseño y optimización de:
+
+- **System Prompts**: Definición de comportamientos, reglas y estructuras fundamentales para agentes.
+- **User Prompts**: Creación de instrucciones precisas y contextuales para obtener los mejores resultados de los modelos de lenguaje.
+
+En esta sección encontrarás las herramientas necesarias para construir agentes robustos:
+- **Prompts de sistema**: Definiciones detalladas del rol y la misión del agente.
+- **Reglas**: Directrices específicas de comportamiento y respuesta.
+- **Skills (Habilidades)**: Extensiones de capacidad para tareas especializadas.
